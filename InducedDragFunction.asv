@@ -46,8 +46,6 @@ nace_length = 1 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 nace_dia = 1 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 S_wet_nace = pi*nace_dia*nace_length
 
-%nacelles formfactor
-FF_nace = 1 + 0.35/(nace_length/nace_dia)
 nace_num = 8 %number of nacelles
 
 %wings

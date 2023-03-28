@@ -8,5 +8,6 @@ function output = WarmupTakeoffFunction(inputs)
 
 % "inputs" not used here
 
-output.f_to = 0.997;
+% output.f_to = 0.997;
+output.f_to = 0.990;
 end

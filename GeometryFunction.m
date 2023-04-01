@@ -55,12 +55,12 @@ Swetv       = 2*Sv*1.02;                               % V-tail wetted area [ft^
 
 %% Engine geometry computations (based on Raymer Taqble 10.4)
 % For turboprop engines
-% le = 0.35*Eng_power^0.373;                          % engine length [ft]
-% de = 0.8*Eng_power^0.120;                           % engine diameter [ft]
+le = 0.35*Eng_power^0.373;                          % engine length [ft]
+de = 0.8*Eng_power^0.120;                           % engine diameter [ft]
 
-%Scaled from PT6A:
-le = 80/12*(Eng_power/1700)^0.373;                           % engine length [ft]
-de = 24/12*(Eng_power/1700)^0.120;                           % engine diameter [ft]
+% %Scaled from PT6A:
+% le = 80/12*(Eng_power/1700)^0.373;                           % engine length [ft]
+% de = 24/12*(Eng_power/1700)^0.120;                           % engine diameter [ft]
 
 Sweteng     = pi*de*le*num_eng;                        % wetted area of engines [ft^2]
 

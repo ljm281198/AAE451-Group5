@@ -24,7 +24,7 @@ MissionInputs.loiter_time = 0.5;   % loiter time [hours]
 MissionInputs.pax         = 48;      % number of passengers   
 
 %% ECONOMIC MISSION PARAMETERS
-EconMission.range         = 500;    % economic mission length [nmi]
+EconMission.range         = 400;    % economic mission length [nmi]
 
 %% PERFORMANCE PARAMETERS
 PerformanceInputs.PW   = 0.05853;      % power-to-weight ratio [lb/hp]
@@ -51,16 +51,36 @@ AeroInputs.Clmax   = 1.6;                  % maximum lift coefficient
 %% PROPULSION PARAMETERS
 PropulsionInputs.num_eng    = 2;           % number of engines
 PropulsionInputs.n_rpm      = 2000;        % Rotational rate [rpm] obtained from engine data
-PropulsionInputs.eta_p      = 0.85;        % Propeller efficiency
-PropulsionInputs.c_bhp      = 0.45;        % Propeller specific fuel consumption [lb/hr] 
+PropulsionInputs.eta_p      = 0.8;        % Propeller efficiency
+PropulsionInputs.c_bhp      = 0.5;        % Propeller specific fuel consumption [lb/hr] 
 %% PAYLOAD PARAMETERS
-PayloadInputs.crewnum    = 1;              % number of crew members (pilots)
+PayloadInputs.crewnum    = 2;              % number of crew members (pilots)
 PayloadInputs.paxweight  = 200;            % passenger weight (including luggage) [lbs]
 PayloadInputs.crewweight = 180;            % crew member weight (including luggage) [lbs]
 
 paxweight  = PayloadInputs.paxweight.*MissionInputs.pax;      % weight of passengers (including luggage) [lbs]
 crewweight = PayloadInputs.crewweight*PayloadInputs.crewnum;  % weight of each crew member [lbs]
 PayloadInputs.w_payload  = crewweight + paxweight;            % total payload weight
+PayloadInputs.w_payload  = 11574;
+
+%% BATTERY PARAMETERS
+BatteryInputs.energydensity = 450; % battery energy density [Wh/kg]
+BatteryInputs.eta_e         = 0.931; % battery electric efficiency
+BatteryInputs.batP_to       = 0; % portion of battery used in taxi/takeoff
+BatteryInputs.batP_cl       = 0; % portion of battery used in climb
+BatteryInputs.batP_cr       = 0; % portion of battery used in cruise
+BatteryInputs.batP_dsc      = 0; % portion of battery used in descend
+BatteryInputs.batP_lt       = 0; % portion of battery used in loiter
+BatteryInputs.batP_lnd      = 0; % portion of battery used in landing/taxi
+BatteryInputs.taxitime      = 10/60; % [hr]
+BatteryInputs.totime        = 1/60; % [hr]
+BatteryInputs.cltime        = 24/60; % [hr]
+BatteryInputs.lndtime       = 10/60; % [hr]
+
+% taxi time 10 mins
+% taxi power use 10%
+% takeofftime 1 min
+%climb time 24 min rn
 
 %% AGGREGATED INPUTS FOR AIRCRAFT SIZING
 inputs.MissionInputs     = MissionInputs;
@@ -70,10 +90,11 @@ inputs.GeometryInputs    = GeometryInputs;
 inputs.PayloadInputs     = PayloadInputs;
 inputs.PropulsionInputs  = PropulsionInputs;
 inputs.AeroInputs        = AeroInputs;
+inputs.BatteryInputs     = BatteryInputs;
 
 %% SIZE AIRCRAFT
    SizingOutput = SizingIterations(inputs);
-
+SizingOutput.Cdo
 %% ECONOMIC MISSION ANALYSIS
    EconMissionOutput = EconMissionFunction(SizingOutput);
    

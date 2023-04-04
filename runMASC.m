@@ -62,6 +62,21 @@ paxweight  = PayloadInputs.paxweight.*MissionInputs.pax;      % weight of passen
 crewweight = PayloadInputs.crewweight*PayloadInputs.crewnum;  % weight of each crew member [lbs]
 PayloadInputs.w_payload  = crewweight + paxweight;            % total payload weight
 PayloadInputs.w_payload  = 11574;
+
+%% BATTERY PARAMETERS
+BatteryInputs.energydensity = 450; % battery energy density [Wh/kg]
+BatteryInputs.eta_e         = 0.931; % battery electric efficiency
+BatteryInputs.batP_to       = 0; % portion of battery used in taxi/takeoff
+BatteryInputs.batP_cl       = 0; % portion of battery used in climb
+BatteryInputs.batP_cr       = 0; % portion of battery used in cruise
+BatteryInputs.batP_dsc      = 0; % portion of battery used in descend
+BatteryInputs.batP_lt       = 0; % portion of battery used in loiter
+BatteryInputs.batP_lnd      = 0; % portion of battery used in landing/taxi
+BatteryInputs.taxitime      = 10/60; % [hr]
+BatteryInputs.totime        = 1/60; % [hr]
+BatteryInputs.cltime        = 24/60; % [hr]
+BatteryInputs.lndtime       = 10/60; % [hr]
+
 %% AGGREGATED INPUTS FOR AIRCRAFT SIZING
 inputs.MissionInputs     = MissionInputs;
 inputs.EconMission       = EconMission;
@@ -70,6 +85,7 @@ inputs.GeometryInputs    = GeometryInputs;
 inputs.PayloadInputs     = PayloadInputs;
 inputs.PropulsionInputs  = PropulsionInputs;
 inputs.AeroInputs        = AeroInputs;
+inputs.BatteryInputs     = BatteryInputs;
 
 %% SIZE AIRCRAFT
    SizingOutput = SizingIterations(inputs);

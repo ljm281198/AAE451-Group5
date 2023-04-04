@@ -8,8 +8,8 @@ function Cdo = ParasiteDragFunction(inputs)
 %% Inputs
   Sw = inputs.GeometryOutput.Sw; % Planform wing area [ft^2]
   
-% % Equivalent skin friction coefficient (based on Raymer Ch.12 Table 12.3)
-% Cfe = 0.0055;    % Light aircraft - SINGLE engine
+% Equivalent skin friction coefficient (based on Raymer Ch.12 Table 12.3)
+Cfe = 0.0055;    % Light aircraft - SINGLE engine
 
 %%  Gavin's stupid code
 %Parasite drag
@@ -67,11 +67,8 @@ z = (2-mach^2)*cos(0) / sqrt(1- (mach^2) * cos(0)^2)
 t_over_c = 0.1      %thickness to chord ratio!!!!!!!!
 FF_w = 1 + z(t_over_c) + 100(t_over_c)^4
 
-
 %interference factor for wings
 Qn_w = 1.0  
-
-CD0_wing = FF_w*Qn_w*Cf*S_wet_wing/Sw;
 
 %interference factor for T-tail
 Q_H = 1.04 
@@ -89,5 +86,5 @@ CD0_bogey = 1.40;   %bogey, Only when gear is deployed!!!
 
 % Parasite Drag coefficient
 %Cdo = Cfe*inputs.GeometryOutput.Swet/inputs.GeometryOutput.Sw; 
-Cdo = CD0_fuse + CD0_nace + CD0_wing + CD0_leak + CD0_strut; %missing tails and effects of wing mounted props
+Cdo = CD0_fuse + CD0_nace
 end

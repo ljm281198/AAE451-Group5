@@ -44,8 +44,8 @@ fr          = lf/df;                                   % fuselage finess ratio
 Swetfus     = pi*df*lf*(1-2/fr)^(2/3)*(1+1/fr^2);      % wetted area of fuselage [ft^2]
 
 %% Tails geometry computations (Based on Raymer Ch.6 Eq. 6.28-6.29)
-H_loc       = 0.45;                                    % Location of H-tail as a fraction of fuselage length
-V_loc       = 0.45;                                    % Location of V-tail as a fraction of fuselage length
+H_loc       = 0.498;                                    % Location of H-tail as a fraction of fuselage length
+V_loc       = 0.498;                                    % Location of V-tail as a fraction of fuselage length
 Lht         = H_loc*lf;                                % H-tail moment arm [ft]
 Lvt         = V_loc*lf;                                % V-tail moment arm (for engines on wing) [ft]
 Sv          = Cvt*b*Sw/Lvt;                            % V-tail surface area [ft^2]
@@ -55,12 +55,12 @@ Swetv       = 2*Sv*1.02;                               % V-tail wetted area [ft^
 
 %% Engine geometry computations (based on Raymer Taqble 10.4)
 % For turboprop engines
-% le = 0.35*Eng_power^0.373;                          % engine length [ft]
-% de = 0.8*Eng_power^0.120;                           % engine diameter [ft]
+le = 0.35*Eng_power^0.373;                          % engine length [ft]
+de = 0.8*Eng_power^0.120;                           % engine diameter [ft]
 
 %Scaled from PT6A:
-le = 80/12*(Eng_power/1700)^0.373;                           % engine length [ft]
-de = 24/12*(Eng_power/1700)^0.120;                           % engine diameter [ft]
+% le = 80/12*(Eng_power/1700)^0.373;                           % engine length [ft]
+% de = 24/12*(Eng_power/1700)^0.120;                           % engine diameter [ft]
 
 Sweteng     = pi*de*le*num_eng;                        % wetted area of engines [ft^2]
 

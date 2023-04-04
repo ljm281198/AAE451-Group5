@@ -16,8 +16,7 @@ eta_p  = inputs.PropulsionInputs.eta_p;              % propeller efficiency
 c_bhp  = inputs.PropulsionInputs.c_bhp;              % Propeller specific fuel consumption [lb/hr]
 Sw      = inputs.GeometryOutput.Sw;                % wing area [ft]
 AR        = inputs.GeometryInputs.AR;               % wing aspect ratio
-SizingOutput = SizingIterations(inputs)
-W = SizingOutput.W4; % weight after descend phase
+
 %%
 %% Parasite drag computation
  inputs.Aero.Cdo = ParasiteDragFunction(inputs); % Parasite Drag Coefficient, Cdo
@@ -27,7 +26,7 @@ W = SizingOutput.W4; % weight after descend phase
 %  inputs.Aero.V = inputs.PerformanceInputs.Vlt;   % Loiter velocity [knots]
  inputs.Aero.h = inputs.PerformanceInputs.hlt;   % Loiter altitude [ft]
  [~,~,rho] = AtmosphereFunction(inputs.Aero.h); % density at altitude
- inputs.Aero.V     = (1/1.68781)*sqrt((2*W/(rho*Sw))*sqrt(1/(pi*AR*inputs.Aero.e0*3*inputs.Aero.Cdo))); % [ktas]
+ inputs.Aero.V     = (1/1.68781)*sqrt((2*Wi/(rho*Sw))*sqrt(1/(pi*AR*inputs.Aero.e0*3*inputs.Aero.Cdo))); % [ktas]
  V_ft_s =  inputs.Aero.V*1.68781;               % Loiter velocity [ft/s]
 
 %% loiter fuel computation  

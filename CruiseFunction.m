@@ -12,8 +12,8 @@ function output = CruiseFunction(inputs,Wo)
 
 %% Inputs for cruise fuel computations
 Range  = inputs.MissionInputs.R;                    % aircraft design range [nmi]
-eta_p  = inputs.PropulsionInputs.eta_p;             % propeller efficiency
-c_bhp  = inputs.PropulsionInputs.c_bhp;             % specific fuel consumption [lb/hr]
+eta_p  = inputs.PropulsionInputs.eta_p;             % propeller efficiency for cruise
+c_bhp  = inputs.PropulsionInputs.c_bhp;             % specific fuel consumption for cruise [lb/hr]
 %%
 %% Parasite drag computation
  inputs.Aero.Cdo = ParasiteDragFunction(inputs);    % Parasite Drag Coefficient, Cdo

@@ -6,9 +6,9 @@
 
 function Cdo = ParasiteDragFunction(inputs)
 % Equivalent skin friction coefficient (based on Raymer Ch.12 Table 12.3)
-Cfe = 0.0055;    % Light aircraft - SINGLE engine
+Cfe = 0.0026;    % Light aircraft - SINGLE engine
 
 % Parasite Drag coefficient
 Cdo = Cfe*inputs.GeometryOutput.Swet/inputs.GeometryOutput.Sw; 
-
+Cdo=0.022;
 end

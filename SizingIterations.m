@@ -50,7 +50,7 @@ while diff > tolerance
   f_cr                = CruiseOutput.f_cr;          % cruise fuel weight fraction
   W3                  = W2*f_cr;                    % aircraft weight after cruise segment [lbs]
 % Descend fuel weight fraction (including descend segment as well)
-  LandingTaxiOutput   = DescendFunction(inputs);
+  DescendOutput       = DescendFunction(inputs);
   f_dsc               = DescendOutput.f_dsc;    % landing and taxi fuel weight segment
   W4                  = W3*f_dsc;                   % aircraft weight after landing & taxi segment [lbs]
 % Loiter segment fuel weight fraction
@@ -65,7 +65,7 @@ while diff > tolerance
 %% Compute new weights based on results of current iteration  
 % Total fuel weight fraction (including trapped fuel of 5%)
 
-  FWF       = 1.01*(1- f_to*f_cl*f_cr*f_dsc*f_lt*f_lnd);  % Fuel weight fraction 
+  FWF       = 1.06*(1- f_to*f_cl*f_cr*f_dsc*f_lt*f_lnd);  % Fuel weight fraction 
   Wfuel     = FWF*TOGW_temp;                        % Total fuel weight [lbs] (Overestimates - used scaling factor)
   
 % Aircraft Takeoff Gross Weight Weight (TOGW) [lbs]: Wempty+Wpayload+Wfuel  
@@ -87,4 +87,5 @@ FinalOutput.EmptyWeight = EmptyWeightOutput;
 FinalOutput.TOGW        = TOGW;
 FinalOutput.Wfuel       = Wfuel;
 FinalOutput.Power       = inputs.Sizing.Power;
+FinalOutput.W4          = W4;
 end

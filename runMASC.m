@@ -19,12 +19,12 @@ clear
 clc
 
 %% DESIGN MISSION PARAMETERS
-MissionInputs.R           = 250;    % aircraft range [nmi]
+MissionInputs.R           = 1000;    % aircraft range [nmi]
 MissionInputs.loiter_time = 0.75;   % loiter time [hours]
-MissionInputs.pax         = 4;      % number of passengers   
+MissionInputs.pax         = 48;      % number of passengers   
 
 %% ECONOMIC MISSION PARAMETERS
-EconMission.range         = 135;    % economic mission length [nmi]
+EconMission.range         = 500;    % economic mission length [nmi]
 
 %% PERFORMANCE PARAMETERS
 PerformanceInputs.PW   = 0.11;      % power-to-weight ratio [lb/hp]
@@ -33,8 +33,8 @@ PerformanceInputs.V    = 190;       % cruise velocity [knots]
 PerformanceInputs.M    = 0.285;     % cruise velocity [Mach]. This needs to be changed to match V at desired altitude.  Can automate this calculation with the AtmosphereFunction
 PerformanceInputs.Vlt  = 100;       % loiter velocity [knots]
 PerformanceInputs.nmax = 3.75;      % maximum load factor
-PerformanceInputs.hc   = 5000;      % cruise altitude [ft]
-PerformanceInputs.hlt  = 2500;      % loiter altitude [ft]
+PerformanceInputs.hc   = 30000;      % cruise altitude [ft]
+PerformanceInputs.hlt  = 25000;      % loiter altitude [ft]
 
 %% GEOMETRY PARAMETERS
 GeometryInputs.AR          = 10;         % wing aspect ratio

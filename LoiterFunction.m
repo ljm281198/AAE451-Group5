@@ -13,7 +13,7 @@ function output = LoiterFunction(inputs,Wi)
 %% Inputs for loiter fuel computations
 time  = inputs.MissionInputs.loiter_time;           % Loiter time [hours]
 eta_p  = inputs.PropulsionInputs.eta_p;              % propeller efficiency
-c_bhp  = inputs.PropulsionInputs.c_bhp;              % Propeller specific fuel consumption [lb/hr]
+c_bhp  = inputs.PropulsionInputs.c_bhp+1;              % Propeller specific fuel consumption [lb/hr]
 %%
 %% Parasite drag computation
  inputs.Aero.Cdo = ParasiteDragFunction(inputs); % Parasite Drag Coefficient, Cdo

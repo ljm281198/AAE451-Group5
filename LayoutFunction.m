@@ -9,18 +9,18 @@ function output = LayoutFunction(inputs)
 pax = inputs.MissionInputs.pax;
 
 %% Aircraft layout inputs (mid-size passenger transport)
-crewnum          = 1;    % crew members (pilots only)
+crewnum          = 2;    % crew members (pilots only)
 
 %% Aircraft fuselage dimensions & flight crew 
 
 % diameter of fuselage [ft]
-df = 5.9;                                       % aircraft diameter [ft]
+df = 9.454;                                       % aircraft diameter [ft]
 
 % length of fuselage [ft]  
-lf = 55;
+lf = 74.5;
 
 % number of crew members (not including pilots) 
-flcrewnum   = 0;  % number of flight crew 
+flcrewnum   = 1;  % number of flight crew 
 
 %number of crew members (pilots and flight attendants)
 crew = crewnum + flcrewnum;  

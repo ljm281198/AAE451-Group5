@@ -18,7 +18,7 @@
 function FinalOutput = SizingIterations(inputs)
 
 %% Start Aircraft Sizing Iterations
-TOGW_temp = 3500;        % guess of takeoff gross weight [lbs] 
+TOGW_temp = 41005;        % guess of takeoff gross weight [lbs] 
 tolerance = 0.1;         % sizing tolerance [lbs]
 diff      = tolerance+1; % initial tolerance gap [lbs]
 

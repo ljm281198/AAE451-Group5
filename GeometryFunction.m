@@ -32,6 +32,7 @@ n_rpm       = inputs.PropulsionInputs.n_rpm;           % Rotational rate [rpm] o
 %  Can be changed or computed as needed
 Cht         = 0.9;        % Horizontal-tail volume coefficient
 Cvt         = 0.08;       % Vertical-tail volume coefficient
+%Had to take from Raymer no values from the actual aircraft
 %%
 %% Wing geometry computations (See Raymer Ch.7 Eq. 7.5-7.8)
 Sw          = Wt/WingLoading;                          % Wing planform area [ft^2]
@@ -44,8 +45,11 @@ fr          = lf/df;                                   % fuselage finess ratio
 Swetfus     = pi*df*lf*(1-2/fr)^(2/3)*(1+1/fr^2);      % wetted area of fuselage [ft^2]
 
 %% Tails geometry computations (Based on Raymer Ch.6 Eq. 6.28-6.29)
-H_loc       = 0.45;                                    % Location of H-tail as a fraction of fuselage length
-V_loc       = 0.45;                                    % Location of V-tail as a fraction of fuselage length
+%rough measurement 
+%Plane starts at 15 wing at 140  horizontal tail = 285 vtail at 285 fues 306 
+H_loc       = 0.498;                                    % Location of H-tail as a fraction of fuselage length
+V_loc       = 0.498;                                    % Location of V-tail as a fraction of fuselage length
+
 Lht         = H_loc*lf;                                % H-tail moment arm [ft]
 Lvt         = V_loc*lf;                                % V-tail moment arm (for engines on wing) [ft]
 Sv          = Cvt*b*Sw/Lvt;                            % V-tail surface area [ft^2]

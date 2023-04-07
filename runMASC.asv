@@ -107,9 +107,8 @@ SizingOutput.Cdo
    FinalOutput              = SizingOutput;
 %    FinalOutput.AqCostOutput = AqCostOutput;
 %    FinalOutput.OpCostOutput = OpCostOutput;
-  fprintf('%s \n','Final Aircraft')
    ReportFunction(FinalOutput);
-   fprintf('%s \n','Economic Mission')
+   fprintf('%s \n','')
 ReportFunction(EconMissionOutput);
 
 

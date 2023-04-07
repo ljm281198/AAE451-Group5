@@ -21,7 +21,7 @@ function FinalOutput = SizingIterations(inputs)
 TOGW_temp = 41005;        % guess of takeoff gross weight [lbs] 
 tolerance = 0.1;         % sizing tolerance [lbs]
 diff      = tolerance+1; % initial tolerance gap [lbs]
-
+mbatt_total = 0; %intializing battery [lbs]
 while diff > tolerance
    inputs.Sizing.Power     = TOGW_temp*inputs.PerformanceInputs.PW; % compute total power (based on P/W)
    inputs.Sizing.TOGW_temp = TOGW_temp;                             % store initial gross weight
@@ -48,7 +48,9 @@ while diff > tolerance
 % Cruise segment fuel weight fraction
   CruiseOutput        = CruiseFunction(inputs,W2);
   f_cr                = CruiseOutput.f_cr;          % cruise fuel weight fraction
-  W3                  = W2*f_cr;                    % aircraft weight after cruise segment [lbs]
+  mbatt_cruise        = CruiseOutput.batt;          % cruise battery weight [lbc]
+  mbatt_total         = mbatt_total + mbatt_cruise; %total battery weight [lbs]
+  W3                  = W2*f_cr+mbatt_total;        % aircraft weight after cruise segment [lbs]
 % Descend fuel weight fraction (including descend segment as well)
   DescendOutput       = DescendFunction(inputs);
   f_dsc               = DescendOutput.f_dsc;    % landing and taxi fuel weight segment
@@ -56,7 +58,10 @@ while diff > tolerance
 % Loiter segment fuel weight fraction
   LoiterOutput        = LoiterFunction(inputs,W4);
   f_lt                = LoiterOutput.f_lt;          % loiter fuel weight segment
-  W5                  = W4*f_lt;                    % aircraft weight after loiter segment [lbs]
+
+  mbatt_loiter        = LoiterOutput.batt;          % loiter battery weight [lbc]
+  mbatt_total         = mbatt_total + mbatt_loiter; %total battery weight [lbs]
+  W5                  = W4*f_lt+mbatt_total;        % aircraft weight after loiter segment [lbs]
 % Landing and taxi fuel weight fraction (including descend segment as well)
   LandingTaxiOutput   = LandingTaxiFunction(inputs);
   f_lnd               = LandingTaxiOutput.f_lnd;    % landing and taxi fuel weight segment
@@ -69,12 +74,14 @@ while diff > tolerance
   Wfuel     = FWF*TOGW_temp;                        % Total fuel weight [lbs] (Overestimates - used scaling factor)
   
 % Aircraft Takeoff Gross Weight Weight (TOGW) [lbs]: Wempty+Wpayload+Wfuel  
-  TOGW      = EmptyWeightOutput.We + inputs.PayloadInputs.w_payload + Wfuel;  
+  TOGW      = EmptyWeightOutput.We + inputs.PayloadInputs.w_payload + Wfuel+mbatt_total;  
   
 % Compute convergence criteria & set-up for next iteration   
   diff      = abs(TOGW_temp - TOGW);
   TOGW_temp = TOGW;                  
   TOGW      = 0; 
+  mbatt_final = mbatt_total;
+  mbatt_total = 0;
 end
 
 % EmptyWeightOutput
@@ -88,6 +95,7 @@ FinalOutput.TOGW        = TOGW;
 FinalOutput.Wfuel       = Wfuel;
 FinalOutput.Power       = inputs.Sizing.Power;
 FinalOutput.W4          = W4;
+FinalOutput.batt        = mbatt_final;
 
 inputs.Aero.Cdo = ParasiteDragFunction(inputs);
 FinalOutput.Cdo = inputs.Aero.Cdo;

@@ -16,7 +16,7 @@ eta_p  = inputs.PropulsionInputs.eta_p;             % propeller efficiency
 c_bhp  = inputs.PropulsionInputs.c_bhp;             % specific fuel consumption [lb/hr]
 eta_batt = inputs.BatteryInputs.eta_e;           %electric propuslion efficiency
 batt_dens = inputs.BatteryInputs.energydensity;      %battery energy density W*hr/kg
-percent_bat = inputs.BatteryInputs.batP_cr;         %batter use in cruise (%)
+percent_bat = inputs.BatteryInputs.batP_cr;         %battery use in cruise (%)
 %%
 %% Parasite drag computation
  inputs.Aero.Cdo = ParasiteDragFunction(inputs);    % Parasite Drag Coefficient, Cdo

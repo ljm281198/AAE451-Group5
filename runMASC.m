@@ -52,7 +52,7 @@ AeroInputs.Clmax   = 1.6;                  % maximum lift coefficient
 PropulsionInputs.num_eng    = 2;           % number of engines
 PropulsionInputs.n_rpm      = 1200;        % Rotational rate [rpm] obtained from engine data
 PropulsionInputs.eta_p      = 0.75;        % Propeller efficiency
-PropulsionInputs.c_bhp      = 0.459;        % Propeller specific fuel consumption [lb/hr] 
+PropulsionInputs.c_bhp      = 0.5;        % Propeller specific fuel consumption [lb/hr] 
 
 %% PAYLOAD PARAMETERS
 PayloadInputs.crewnum    = 2;              % number of crew members (pilots)

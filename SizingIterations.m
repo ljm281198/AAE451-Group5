@@ -31,7 +31,7 @@ while diff > tolerance
    eta_batt = inputs.BatteryInputs.eta_e;           %electric propuslion efficiency
    batt_dens = inputs.BatteryInputs.energydensity;      %battery energy density W*hr/kg
    batP_to = inputs.BatteryInputs.batP_to; % portion of battery used in taxi/takeoff
-   batP_cl = inputs.BatteryInputs.batP_cl       = 0; % portion of battery used in climb
+   batP_cl = inputs.BatteryInputs.batP_cl; % portion of battery used in climb
    batP_dsc = inputs.BatteryInputs.batP_dsc; % portion of battery used in descend
    batP_lnd = inputs.BatteryInputs.batP_lnd; % portion of battery used in landing/taxi
    t_taxi = inputs.BatteryInputs.taxitime; % [hr]
@@ -113,6 +113,7 @@ while diff > tolerance
   TOGW      = 0; 
   mbatt_final = mbatt_total;
   mbatt_total = 0;
+  mfuel_total = 0;
 end
 
 % EmptyWeightOutput

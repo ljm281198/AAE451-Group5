@@ -158,6 +158,6 @@ CD0_bogey = 1.40;   %bogey, Only when gear is deployed!!!
 %% Parasite Drag coefficient
 %Cdo = Cfe*inputs.GeometryOutput.Swet/inputs.GeometryOutput.Sw; 
 Cdo = CD0_fuse + CD0_nace + CD0_wing + CD0_strut + CD0_tailH + CD0_tailV %total parasite drag of whole aircraft
-Cdo=1.15*Cdo;
-Cdo=0.027;
+% Cdo=1.15*Cdo;
+% Cdo=0.022;
 end

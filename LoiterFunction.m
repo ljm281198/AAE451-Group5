@@ -50,6 +50,7 @@ percent_bat = inputs.BatteryInputs.batP_lt;         %batter use in loiter (%)
   output.f_lt = (Wi-fuel_weight)/Wi;                           % loiter fuel-weight ratio (for entire segment)
   output.fuel = Wi-Wf;   % total loiter fuel [lbs]
    output.batt     = batt_weight;                    % total battery weight [lbs]
+   output.Vloiter = inputs.Aero.V;
   %this is a comment
   
 end

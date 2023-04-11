@@ -14,7 +14,7 @@ crewnum          = 2;    % crew members (pilots only)
 %% Aircraft fuselage dimensions & flight crew 
 
 % diameter of fuselage [ft]
-df = 9.45;                                       % aircraft diameter [ft]
+df = 9.454;                                       % aircraft diameter [ft]
 
 % length of fuselage [ft]  
 lf = 74.5;

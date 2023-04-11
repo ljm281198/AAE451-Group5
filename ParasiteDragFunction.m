@@ -10,5 +10,5 @@ Cfe = 0.0026;    % Light aircraft - SINGLE engine
 
 % Parasite Drag coefficient
 Cdo = Cfe*inputs.GeometryOutput.Swet/inputs.GeometryOutput.Sw; 
-Cdo=0.022;
+Cdo=0.025;
 end

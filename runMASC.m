@@ -24,20 +24,20 @@ MissionInputs.loiter_time = 0.5;   % loiter time [hours]
 MissionInputs.pax         = 48;      % number of passengers   
 
 %% ECONOMIC MISSION PARAMETERS
-EconMission.range         = 400;    % economic mission length [nmi]
+EconMission.range         = 500;    % economic mission length [nmi]
 
 %% PERFORMANCE PARAMETERS
-PerformanceInputs.PW   = 0.05853;      % power-to-weight ratio [lb/hp]
-PerformanceInputs.WS   = 69.855;        % wing loading [lbs/ft^2]
+PerformanceInputs.PW   = 2400/41005;      % power-to-weight ratio [lb/hp]
+PerformanceInputs.WS   = 41005/587;        % wing loading [lbs/ft^2]
 PerformanceInputs.V    = 289;       % cruise velocity [knots]
-PerformanceInputs.M    = 0.2784;     % cruise velocity [Mach]. This needs to be changed to match V at desired altitude.  Can automate this calculation with the AtmosphereFunction
+PerformanceInputs.M    = 289/1.0381445e3;     % cruise velocity [Mach]. This needs to be changed to match V at desired altitude.  Can automate this calculation with the AtmosphereFunction
 % PerformanceInputs.Vlt  = 100;       % loiter velocity [knots]
 PerformanceInputs.nmax = 3.75;      % maximum load factor
-PerformanceInputs.hc   = 19899;      % cruise altitude [ft]
-PerformanceInputs.hlt  = 2500;      % loiter altitude [ft]
+PerformanceInputs.hc   = 19685;      % cruise altitude [ft]
+PerformanceInputs.hlt  = 5000;      % loiter altitude [ft]
 
 %% GEOMETRY PARAMETERS
-GeometryInputs.AR          = 11.1;         % wing aspect ratio
+GeometryInputs.AR          = 11.08;         % wing aspect ratio
 GeometryInputs.WingSweep   = 0;          % wing sweep (LE) [deg]
 GeometryInputs.thick2chord = 0.1;       % wing thickness-to-chord ratio
 GeometryInputs.TR          = 0.6;        % wing taper ratio
@@ -50,9 +50,9 @@ AeroInputs.Clmax   = 1.6;                  % maximum lift coefficient
 
 %% PROPULSION PARAMETERS
 PropulsionInputs.num_eng    = 2;           % number of engines
-PropulsionInputs.n_rpm      = 2000;        % Rotational rate [rpm] obtained from engine data
-PropulsionInputs.eta_p      = 0.8;        % Propeller efficiency
-PropulsionInputs.c_bhp      = 0.5;        % Propeller specific fuel consumption [lb/hr] 
+PropulsionInputs.n_rpm      = 1200;        % Rotational rate [rpm] obtained from engine data
+PropulsionInputs.eta_p      = 0.75;        % Propeller efficiency
+PropulsionInputs.c_bhp      = 0.459;        % Propeller specific fuel consumption [lb/hr] 
 
 %% PAYLOAD PARAMETERS
 PayloadInputs.crewnum    = 2;              % number of crew members (pilots)
@@ -63,7 +63,7 @@ paxweight  = PayloadInputs.paxweight.*MissionInputs.pax;      % weight of passen
 crewweight = PayloadInputs.crewweight*PayloadInputs.crewnum;  % weight of each crew member [lbs]
 PayloadInputs.w_payload  = crewweight + paxweight;            % total payload weight
 PayloadInputs.w_payload  = 11574;
-
+PayloadInputs.w_payload  = 10053;
 %% BATTERY PARAMETERS
 BatteryInputs.energydensity = 450; % battery energy density [Wh/kg]
 BatteryInputs.eta_e         = 0.931; % battery electric efficiency
@@ -91,6 +91,7 @@ inputs.BatteryInputs     = BatteryInputs;
 %% SIZE AIRCRAFT
    SizingOutput = SizingIterations(inputs);
 SizingOutput.Cdo
+SizingOutput.Vloiter %ktas
 %% ECONOMIC MISSION ANALYSIS
    EconMissionOutput = EconMissionFunction(SizingOutput);
    

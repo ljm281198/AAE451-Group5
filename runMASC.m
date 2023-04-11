@@ -24,14 +24,14 @@ MissionInputs.loiter_time = 0.5;   % loiter time [hours]
 MissionInputs.pax         = 48;      % number of passengers   
 
 %% ECONOMIC MISSION PARAMETERS
-EconMission.range         = 500;    % economic mission length [nmi]
+EconMission.range         = 400;    % economic mission length [nmi]
 
 %% PERFORMANCE PARAMETERS
 PerformanceInputs.PW   = 2400/41005;      % power-to-weight ratio [lb/hp]
 PerformanceInputs.WS   = 41005/587;        % wing loading [lbs/ft^2]
 PerformanceInputs.V    = 289;       % cruise velocity [knots]
 PerformanceInputs.M    = 289/1.0381445e3;     % cruise velocity [Mach]. This needs to be changed to match V at desired altitude.  Can automate this calculation with the AtmosphereFunction
-% PerformanceInputs.Vlt  = 100;       % loiter velocity [knots]
+PerformanceInputs.Vlt  = 127.72;       % loiter velocity [knots]
 PerformanceInputs.nmax = 3.75;      % maximum load factor
 PerformanceInputs.hc   = 19685;      % cruise altitude [ft]
 PerformanceInputs.hlt  = 5000;      % loiter altitude [ft]
@@ -62,8 +62,8 @@ PayloadInputs.crewweight = 180;            % crew member weight (including lugga
 paxweight  = PayloadInputs.paxweight.*MissionInputs.pax;      % weight of passengers (including luggage) [lbs]
 crewweight = PayloadInputs.crewweight*PayloadInputs.crewnum;  % weight of each crew member [lbs]
 PayloadInputs.w_payload  = crewweight + paxweight;            % total payload weight
-PayloadInputs.w_payload  = 11574;
-PayloadInputs.w_payload  = 10053;
+PayloadInputs.w_payload  = 11574; % economy
+PayloadInputs.w_payload  = 10053; % full range
 %% BATTERY PARAMETERS
 BatteryInputs.energydensity = 450; % battery energy density [Wh/kg]
 BatteryInputs.eta_e         = 0.931; % battery electric efficiency
@@ -90,7 +90,8 @@ inputs.BatteryInputs     = BatteryInputs;
 
 %% SIZE AIRCRAFT
    SizingOutput = SizingIterations(inputs);
-SizingOutput.Cdo
+SizingOutput.Cdoloiter
+SizingOutput.Cdocruise
 SizingOutput.Vloiter %ktas
 %% ECONOMIC MISSION ANALYSIS
    EconMissionOutput = EconMissionFunction(SizingOutput);

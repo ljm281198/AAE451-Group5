@@ -128,7 +128,9 @@ FinalOutput.Power       = inputs.Sizing.Power;
 FinalOutput.W4          = W4;
 FinalOutput.batt        = mbatt_final;
 
-inputs.Aero.Cdo = ParasiteDragFunction(inputs);
-FinalOutput.Cdo = inputs.Aero.Cdo;
+inputs.Aero.Cdo.cruise = ParasiteDragFunction(inputs,"cruise");
+inputs.Aero.Cdo.loiter = ParasiteDragFunction(inputs,"loiter");
+FinalOutput.Cdocruise = inputs.Aero.Cdo.cruise;
+FinalOutput.Cdoloiter = inputs.Aero.Cdo.loiter;
 FinalOutput.Vloiter = LoiterOutput.Vloiter;
 end

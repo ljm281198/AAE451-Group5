@@ -87,7 +87,7 @@ CD0_nace = Qn_nace*nace_num*FF_nace*Cf_fuse*S_wet_nace/Sw
 z = (2-mach^2)*cos(0) / sqrt(1- (mach^2) * cos(0)^2)
 
 %wing form factor, from shevell
-t_over_c = 0.1      %thickness to chord ratio!!!!!!!!!!!!!!!!!!!
+t_over_c = inputs.GeometryInputs.thick2chord      %thickness to chord ratio!!!!!!!!!!!!!!!!!!!
 FF_w = 1 + z*(t_over_c) + 100*(t_over_c)^4
 
 %Reynolds number for wing
@@ -150,11 +150,14 @@ CD0_tailV = FF_tailV*Q_V*Cf_tailV*inputs.GeometryOutput.Sv/Sw; %total parasite d
 %from Xflir
 % CD0_tailV = 0.00490;
 %% Misc
-CD0_strut = 0.05;   %streamlined strut, Raymer Table 12.6 (Causing a BIG Raise in CD0)!!!!!!!!!!
+% CD0_strut = 0.05;   %streamlined strut, Raymer Table 12.6 (Causing a BIG Raise in CD0)!!!!!!!!!!
+CD0_strut = 0;
 
 CD0_bogey = 1.40;   %bogey, Only when gear is deployed!!!
 
 %% Parasite Drag coefficient
 %Cdo = Cfe*inputs.GeometryOutput.Swet/inputs.GeometryOutput.Sw; 
 Cdo = CD0_fuse + CD0_nace + CD0_wing + CD0_strut + CD0_tailH + CD0_tailV %total parasite drag of whole aircraft
+Cdo=1.15*Cdo;
+Cdo=0.027;
 end

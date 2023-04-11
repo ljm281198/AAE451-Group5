@@ -101,6 +101,9 @@ Cf_wing = 0.455/(log10(Re_wing)^2.58)
 Qn_w = 1.0  
 
 CD0_wing = FF_w*Qn_w*Cf_wing*inputs.GeometryOutput.Swetwing/Sw;
+
+%from Xflir
+% CD0_wing = 0.0057;
 %% horizontal tail
 %interference factor for T-tail
 Q_H = 1.04
@@ -120,6 +123,10 @@ Re_tailH = rho*V*MAC/mu;
 Cf_tailH = 0.455/(log10(Re_tailH)^2.58)
 
 CD0_tailH = FF_tailH*Q_H*Cf_tailH*inputs.GeometryOutput.Sh/Sw; %total parasite drag from tail horizontal
+
+%from Xflir
+% CD0_tailH = 0.00490;
+
 %% Vertical tail
 %interference factor for T-tail
 Q_V = 1.04
@@ -139,6 +146,9 @@ Re_tailV = rho*V*MAC/mu;
 Cf_tailV = 0.455/(log10(Re_tailV)^2.58)
 
 CD0_tailV = FF_tailV*Q_V*Cf_tailV*inputs.GeometryOutput.Sv/Sw; %total parasite drag from tail horizontal
+
+%from Xflir
+% CD0_tailV = 0.00490;
 %% Misc
 CD0_strut = 0.05;   %streamlined strut, Raymer Table 12.6 (Causing a BIG Raise in CD0)!!!!!!!!!!
 

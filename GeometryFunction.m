@@ -79,7 +79,10 @@ output.Sh      = Sh;
 output.Sw      = Sw;
 output.Swetfus = Swetfus;
 output.Sweteng = Sweteng;
+output.Swetwing = Swetwing;
 output.Swet    = Swet;
+output.le      = le;
+output.de      = de;
 end
 
 

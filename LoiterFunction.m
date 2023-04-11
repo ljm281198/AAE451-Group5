@@ -23,7 +23,7 @@ percent_bat = inputs.BatteryInputs.batP_lt;         %batter use in loiter (%)
 
 %%
 %% Parasite drag computation
- inputs.Aero.Cdo = ParasiteDragFunction(inputs); % Parasite Drag Coefficient, Cdo
+ inputs.Aero.Cdo = ParasiteDragFunction(inputs,"loiter"); % Parasite Drag Coefficient, Cdo
  inputs.Aero.e0  = OswaldEfficiency(inputs);     % Oswald Efficiency Factor, e0
  
 %% Additional inputs needed for cruise segment analysis

@@ -19,7 +19,7 @@ batt_dens = inputs.BatteryInputs.energydensity;      %battery energy density W*h
 percent_bat = inputs.BatteryInputs.batP_cr;         %battery use in cruise (%)
 %%
 %% Parasite drag computation
- inputs.Aero.Cdo = ParasiteDragFunction(inputs);    % Parasite Drag Coefficient, Cdo
+ inputs.Aero.Cdo = ParasiteDragFunction(inputs,"cruise");    % Parasite Drag Coefficient, Cdo
  inputs.Aero.e0  = OswaldEfficiency(inputs);        % Oswald Efficiency Factor, e0
 
 %% Additional inputs needed for cruise segment analysis

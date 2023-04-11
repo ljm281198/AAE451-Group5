@@ -16,7 +16,7 @@ eta_p  = inputs.PropulsionInputs.eta_p;              % propeller efficiency
 c_bhp  = inputs.PropulsionInputs.c_bhp;              % Propeller specific fuel consumption [lb/hr]
 %%
 %% Parasite drag computation
- inputs.Aero.Cdo = ParasiteDragFunction(inputs); % Parasite Drag Coefficient, Cdo
+ inputs.Aero.Cdo = ParasiteDragFunction(inputs,"loiter"); % Parasite Drag Coefficient, Cdo
  inputs.Aero.e0  = OswaldEfficiency(inputs);     % Oswald Efficiency Factor, e0
  
 %% Additional inputs needed for cruise segment analysis

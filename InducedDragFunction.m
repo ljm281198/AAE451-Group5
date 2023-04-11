@@ -28,7 +28,5 @@ function [Cdi,CL] = InducedDragFunction(inputs,Wi)
 % Induced Drag Coefficient 
   Cdi = CL^2./(pi*AR*e0);  
   
- CD
-  
 end
   

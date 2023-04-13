@@ -115,5 +115,5 @@ Wfrac_climb = SizingOutput.Wfclimb
    fprintf('%s \n','Economic Mission')
 ReportFunction(EconMissionOutput);
 
-
+Vn_diagram(FinalOutput,PerformanceInputs)
 

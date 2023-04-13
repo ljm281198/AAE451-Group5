@@ -128,6 +128,7 @@ FinalOutput.Wfuel       = Wfuel;
 FinalOutput.Power       = inputs.Sizing.Power;
 FinalOutput.W4          = W4;
 FinalOutput.batt        = mbatt_final;
+FinalOutput.Sw          = inputs.GeometryOutput.Sw; % Planform wing area [ft^2]
 
 inputs.Aero.Cdo.cruise = ParasiteDragFunction(inputs,"cruise");
 inputs.Aero.Cdo.loiter = ParasiteDragFunction(inputs,"loiter");

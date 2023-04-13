@@ -1,5 +1,8 @@
-function Vn_diagram(FinalOutput,PerformanceInputs)
+function Vn_diagram(FinalOutput,PerformanceInputs,AeroInputs,inputs)
 W_0 = FinalOutput.EmptyWeight.We;
+TOGW = FinalOutput.TOGW;
+Sw = FinalOutput.Sw; % Planform wing area [ft^2]
+
 
 %n_plus for Part 25 regulations
 n_plus = 2.1 + 24000/(W_0 + 10000)
@@ -7,8 +10,9 @@ if n_plus < 2.5
     n_plus = 2.5
 end
 
-Ve = linspace(0,100,100);
+Ve = linspace(0,320,320);
 plot(Ve, n_plus*ones(1,length(Ve)),"--")
+hold on
 
 %n_minus
 h_cruise = PerformanceInputs.hc;
@@ -20,7 +24,14 @@ V_cruise = TAS_to_EAS(V_cruise,h_cruise);
 % if n_minus > -1.0
 %     n_minus = -1.0
 
+%% n_plus_stall, n_minus_stall
+% n_plus_stall
+n_plus_stall = (0.00237691267925741/2) * (1.688)^2 * (Ve.^2 * AeroInputs.Clmax)/(FinalOutput.TOGW/Sw);
+plot(Ve, n_plus_stall,"--")
 
+% n_minus_stall
+n_minus_stall = (0.00237691267925741/2) * (1.688)^2 * (Ve.^2 * AeroInputs.Clmax_minus)/(FinalOutput.TOGW/Sw);
+plot(Ve, n_minus_stall,"--")
 end
 
 function EAS = TAS_to_EAS(TAS,h) %converts True Air Speed to Equivalent Air speed (units does not matter, output same units as input)

@@ -17,6 +17,7 @@
 %% HOUSEKEEPING
 clear all
 clc
+close all;
 
 %% DESIGN MISSION PARAMETERS
 MissionInputs.R           = 1000;    % aircraft range [nmi]
@@ -46,7 +47,8 @@ GeometryInputs.TR          = 0.667;        % wing taper ratio
 % These parameters and their default values are listed in the LayoutFunction.m file
 
 %% AERODYNAMIC PARAMETERS
-AeroInputs.Clmax   = 1.92;                  % maximum lift coefficient
+AeroInputs.Clmax   = 1.92;                  % maximum Positive lift coefficient
+AeroInputs.Clmax_minus = -0.8;                  % maximum Positive lift coefficient
 
 %% PROPULSION PARAMETERS
 PropulsionInputs.num_eng    = 8;           % number of engines
@@ -115,5 +117,5 @@ Wfrac_climb = SizingOutput.Wfclimb
    fprintf('%s \n','Economic Mission')
 ReportFunction(EconMissionOutput);
 
-Vn_diagram(FinalOutput,PerformanceInputs)
+Vn_diagram(FinalOutput,PerformanceInputs,AeroInputs,inputs)
 

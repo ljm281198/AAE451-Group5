@@ -133,4 +133,6 @@ inputs.Aero.Cdo.loiter = ParasiteDragFunction(inputs,"loiter");
 FinalOutput.Cdocruise = inputs.Aero.Cdo.cruise;
 FinalOutput.Cdoloiter = inputs.Aero.Cdo.loiter;
 FinalOutput.Vloiter = LoiterOutput.Vloiter;
+FinalOutput.Wfcruise = W3/TOGW;
+FinalOutput.Wfclimb = W2/TOGW;
 end

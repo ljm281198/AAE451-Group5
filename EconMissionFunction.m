@@ -108,7 +108,7 @@ end
 TOGW = TOGW_temp;     % Aircraft takeoff gross weight [lbs]
 
 %% OUTPUTS
-inputs.EmptyWeight.We
+inputs.EmptyWeight.We;
 output=inputs;
 output.Wfuel = Wfuel; % mission fuel weight [lbs]
 output.Wto   = TOGW;  % mission takeoff gross weight [lbs]

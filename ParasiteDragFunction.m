@@ -150,8 +150,8 @@ CD0_tailV = FF_tailV*Q_V*Cf_tailV*inputs.GeometryOutput.Sv/Sw; %total parasite d
 %from Xflir
 CD0_tailV = 0.00490;
 %% Misc
-% CD0_strut = 0.05;   %streamlined strut, Raymer Table 12.6 (Causing a BIG Raise in CD0)!!!!!!!!!!
-CD0_strut = 0.01; % from xflr
+CD0_strut = 0.03;   %streamlined strut, Raymer Table 12.6 (Causing a BIG Raise in CD0)!!!!!!!!!!
+% CD0_strut = 0.01; % from xflr
 
 CD0_bogey = 1.40;   %bogey, Only when gear is deployed!!!
 

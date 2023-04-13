@@ -15,5 +15,6 @@ Cdo    = inputs.Aero.Cdo;                        % Parasite drag coefficient
 
 % e0 = 1.78*(1-0.045*AR^0.68)-0.64; % eqn 12.48 Raymer
 e0 = 0.9912 - 0.02*(100*Cdo) - 0.0804*(AR/12) + 0.0026*(100*Cdo)^2 - 0.0831*(100*Cdo)*(AR/12) + 0.0432*(AR/12)^2; % Shevell empirical fit fr
+e0 = 0.95;
 % lecture
 end

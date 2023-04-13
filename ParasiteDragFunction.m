@@ -150,14 +150,14 @@ CD0_tailV = FF_tailV*Q_V*Cf_tailV*inputs.GeometryOutput.Sv/Sw; %total parasite d
 %from Xflir
 CD0_tailV = 0.00490;
 %% Misc
-CD0_strut = 0.03;   %streamlined strut, Raymer Table 12.6 (Causing a BIG Raise in CD0)!!!!!!!!!!
-% CD0_strut = 0.01; % from xflr
+% CD0_strut = 0.03;   %streamlined strut, Raymer Table 12.6 (Causing a BIG Raise in CD0)!!!!!!!!!!
+CD0_strut = 0.01; % from xflr
 
 CD0_bogey = 1.40;   %bogey, Only when gear is deployed!!!
 
 %% Parasite Drag coefficient
 %Cdo = Cfe*inputs.GeometryOutput.Swet/inputs.GeometryOutput.Sw; 
 Cdo = CD0_fuse + CD0_nace + CD0_wing + CD0_strut + CD0_tailH + CD0_tailV; %total parasite drag of whole aircraft
-Cdo=1.1*Cdo;
-% Cdo=0.022;
+% Cdo=Cdo;
+% Cdo=0.02;
 end

@@ -63,7 +63,7 @@ while diff > tolerance
   mbatt_total         = mbatt_total + mbatt_cruise; %total battery weight [lbs]
     mfuel_cr            = W2*(1-f_cr); % fuel weight cruise [lbs]
   mfuel_total         = mfuel_total + mfuel_cr;
-  W3                  = W2*f_cr+mbatt_total;        % aircraft weight after cruise segment [lbs]
+  W3                  = W2 - mfuel_cr;        % aircraft weight after cruise segment [lbs]
 % Descend fuel weight fraction (including descend segment as well)
   DescendOutput       = DescendFunction(inputs);
   f_dsc               = DescendOutput.f_dsc;    % landing and taxi fuel weight segment
@@ -79,7 +79,7 @@ while diff > tolerance
   mbatt_total         = mbatt_total + mbatt_loiter; %total battery weight [lbs]
   mfuel_lt            = W4*(1-f_lt); % fuel weight loiter [lbs]
   mfuel_total         = mfuel_total + mfuel_lt;
-  W5                  = W4*f_lt+mbatt_total;        % aircraft weight after loiter segment [lbs]
+  W5                  = W4 - mfuel_lt;        % aircraft weight after loiter segment [lbs]
 % Landing and taxi fuel weight fraction (including descend segment as well)
   LandingTaxiOutput   = LandingTaxiFunction(inputs);
   f_lnd               = LandingTaxiOutput.f_lnd;    % landing and taxi fuel weight segment
@@ -94,7 +94,7 @@ while diff > tolerance
 % Based on Raymer Ch.3 Eq. 3.11
 %   FWF       = 1.06*(1- f_to*f_cl*f_cr*f_dsc*f_lt*f_lnd);  % Fuel weight fraction 
 %   Wfuel     = 0.8*FWF*TOGW_temp;                    % Total fuel weight [lbs] (Overestimates - used scaling factor)
-    Wfuel = 0.65*1.06*mfuel_total;
+    Wfuel = 0.6*1.06*mfuel_total;
 % Aircraft Takeoff Gross Weight Weight (TOGW) [lbs]: Wempty+Wpayload+Wfuel  
   TOGW      = inputs.EmptyWeight.We + inputs.PayloadInputs.w_payload + Wfuel+mbatt_total;  
   

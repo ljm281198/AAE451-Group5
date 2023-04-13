@@ -94,7 +94,7 @@ while diff > tolerance
 % Based on Raymer Ch.3 Eq. 3.11
 %   FWF       = 1.06*(1- f_to*f_cl*f_cr*f_dsc*f_lt*f_lnd);  % Fuel weight fraction 
 %   Wfuel     = 0.8*FWF*TOGW_temp;                    % Total fuel weight [lbs] (Overestimates - used scaling factor)
-    Wfuel = 0.6*1.06*mfuel_total;
+    Wfuel = 0.65*1.06*mfuel_total;
 % Aircraft Takeoff Gross Weight Weight (TOGW) [lbs]: Wempty+Wpayload+Wfuel  
   TOGW      = inputs.EmptyWeight.We + inputs.PayloadInputs.w_payload + Wfuel+mbatt_total;  
   

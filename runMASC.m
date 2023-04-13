@@ -31,7 +31,7 @@ PerformanceInputs.PW   = 0.041;      % power-to-weight ratio [lb/hp]
 PerformanceInputs.WS   = 35;        % wing loading [lbs/ft^2]
 PerformanceInputs.V    = 275;       % cruise velocity [knots]
 PerformanceInputs.M    = PerformanceInputs.V/994.7485;     % cruise velocity [Mach]. This needs to be changed to match V at desired altitude.  Can automate this calculation with the AtmosphereFunction
-PerformanceInputs.Vlt  = 98;       % loiter velocity [knots] [[change]]
+PerformanceInputs.Vlt  = 100;       % loiter velocity [knots] [[change]]
 PerformanceInputs.nmax = 3.75;      % maximum load factor
 PerformanceInputs.hc   = 30000;      % cruise altitude [ft]
 PerformanceInputs.hlt  = 25000;      % loiter altitude [ft]
@@ -52,7 +52,7 @@ AeroInputs.Clmax   = 1.92;                  % maximum lift coefficient
 PropulsionInputs.num_eng    = 8;           % number of engines
 PropulsionInputs.n_rpm      = 1000;        % Rotational rate [rpm] obtained from engine data
 PropulsionInputs.eta_p      = 0.85;        % Propeller efficiency
-PropulsionInputs.c_bhp      = 0.5;        % Propeller specific fuel consumption [lb/hr] 
+PropulsionInputs.c_bhp      = 0.45;        % Propeller specific fuel consumption [lb/hr] 
 
 %% PAYLOAD PARAMETERS
 PayloadInputs.crewnum    = 3;              % number of crew members ()
@@ -66,8 +66,8 @@ PayloadInputs.w_payload  = crewweight + paxweight;            % total payload we
 %% BATTERY PARAMETERS
 BatteryInputs.energydensity = 450; % battery energy density [Wh/kg]
 BatteryInputs.eta_e         = 0.931; % battery electric efficiency
-BatteryInputs.batP_to       = 0.3; % portion of battery used in taxi/takeoff
-BatteryInputs.batP_cl       = 0.3; % portion of battery used in climb
+BatteryInputs.batP_to       = 0.6; % portion of battery used in taxi/takeoff
+BatteryInputs.batP_cl       = 0.6; % portion of battery used in climb
 BatteryInputs.batP_cr       = 0; % portion of battery used in cruise
 BatteryInputs.batP_dsc      = 0; % portion of battery used in descend
 BatteryInputs.batP_lt       = 0; % portion of battery used in loiter

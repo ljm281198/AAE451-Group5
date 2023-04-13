@@ -160,5 +160,5 @@ CD0_bogey = 1.40;   %bogey, Only when gear is deployed!!!
 Cdo = CD0_fuse + CD0_nace + CD0_wing + CD0_strut + CD0_tailH + CD0_tailV; %total parasite drag of whole aircraft
 % Cdo=Cdo;
 % Cdo=0.02;
-Cdo=1.1*(0.007+CD0_fuse+CD0_nace);
+Cdo=1.6*(0.007+CD0_fuse+CD0_nace);
 end

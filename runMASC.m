@@ -63,7 +63,7 @@ paxweight  = PayloadInputs.paxweight.*MissionInputs.pax;      % weight of passen
 crewweight = PayloadInputs.crewweight*PayloadInputs.crewnum;  % weight of each crew member [lbs]
 PayloadInputs.w_payload  = crewweight + paxweight;            % total payload weight
 PayloadInputs.w_payload  = 11574; % economy
-% PayloadInputs.w_payload  = 10919; % full range
+PayloadInputs.w_payload  = 10919; % full range
 %% BATTERY PARAMETERS
 BatteryInputs.energydensity = 450; % battery energy density [Wh/kg]
 BatteryInputs.eta_e         = 0.931; % battery electric efficiency

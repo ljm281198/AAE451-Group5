@@ -25,7 +25,7 @@ mbatt_total = 0; %intializing battery [lbs]
 mfuel_total = 0; % initialize fuel [lbs]
 while diff > tolerance
    inputs.Sizing.Power     = TOGW_temp*inputs.PerformanceInputs.PW;
-   TOGW_temp*inputs.PerformanceInputs.PW% compute total power (based on P/W)
+   TOGW_temp*inputs.PerformanceInputs.PW;% compute total power (based on P/W)
    inputs.Sizing.TOGW_temp = TOGW_temp;                             % store initial gross weight
    W0                      = TOGW_temp;                             % initial gross weight for current iteration
    inputs.Sizing.W0        = W0;
@@ -52,7 +52,7 @@ while diff > tolerance
 % Warm-up and Takeoff segment fuel weight fraction
   WarmupTakeoffOutput = WarmupTakeoffFunction(inputs);
   f_to                = WarmupTakeoffOutput.f_to;   % warm-up and takeoff fuel weight fraction
-  mbatt_to            = batP_to*2.20462*(0.1*inputs.Sizing.Power*1000/1.342*t_taxi + inputs.Sizing.Power*1000/1.342*t_to)/(eta_batt*batt_dens)  
+  mbatt_to            = batP_to*2.20462*(0.1*inputs.Sizing.Power*1000/1.342*t_taxi + inputs.Sizing.Power*1000/1.342*t_to)/(eta_batt*batt_dens) ; 
   mbatt_total         = mbatt_total + mbatt_to;
   mfuel_to            = (1-batP_to)*TOGW_temp*(1-f_to); % fuel weight takeoff [lbs]
   mfuel_total         = mfuel_total + mfuel_to;
@@ -109,7 +109,7 @@ while diff > tolerance
   
 % Compute convergence criteria & set-up for next iteration   
   diff      = abs(TOGW_temp - TOGW);
-  TOGW_temp = TOGW                  
+  TOGW_temp = TOGW     ;             
   TOGW      = 0; 
   mbatt_final = mbatt_total;
   mbatt_total = 0;
@@ -134,4 +134,6 @@ inputs.Aero.Cdo.loiter = ParasiteDragFunction(inputs,"loiter");
 FinalOutput.Cdocruise = inputs.Aero.Cdo.cruise;
 FinalOutput.Cdoloiter = inputs.Aero.Cdo.loiter;
 FinalOutput.Vloiter = LoiterOutput.Vloiter;
+FinalOutput.Wfcruise = W3/TOGW;
+FinalOutput.Wfclimb = W2/TOGW;
 end

@@ -90,9 +90,11 @@ inputs.BatteryInputs     = BatteryInputs;
 
 %% SIZE AIRCRAFT
    SizingOutput = SizingIterations(inputs);
-SizingOutput.Cdoloiter
-SizingOutput.Cdocruise
-SizingOutput.Vloiter %ktas
+cd0loiter = SizingOutput.Cdoloiter
+cd0cruise = SizingOutput.Cdocruise
+Vloiter = SizingOutput.Vloiter %ktas
+Wfrac_cruise = SizingOutput.Wfcruise
+Wfrac_climb = SizingOutput.Wfclimb
 %% ECONOMIC MISSION ANALYSIS
 %    EconMissionOutput = EconMissionFunction(SizingOutput);
    

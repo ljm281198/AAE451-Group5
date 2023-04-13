@@ -19,8 +19,8 @@ h_cruise = PerformanceInputs.hc;
 V_cruise = PerformanceInputs.V;
 V_cruise = TAS_to_EAS(V_cruise,h_cruise);
 
-% V_dive = V_cruise/0.8;    %wait for email
-% n_minus = 
+V_dive = V_cruise/0.8;    
+% n_minus =                         %wait for email
 % if n_minus > -1.0
 %     n_minus = -1.0
 
@@ -32,6 +32,15 @@ plot(Ve, n_plus_stall,"--")
 % n_minus_stall
 n_minus_stall = (0.00237691267925741/2) * (1.688)^2 * (Ve.^2 * AeroInputs.Clmax_minus)/(FinalOutput.TOGW/Sw);
 plot(Ve, n_minus_stall,"--")
+
+%% plot V_cruise and V_dive
+%plot V_cruise
+n_axis = linspace(-10,10,100);                      %indexes for plotting vertical lines
+plot(V_cruise*ones(1,length(n_axis)),n_axis,"--")
+
+%plot V_dive
+plot(V_dive*ones(1,length(n_axis)),n_axis,"--")
+
 end
 
 function EAS = TAS_to_EAS(TAS,h) %converts True Air Speed to Equivalent Air speed (units does not matter, output same units as input)

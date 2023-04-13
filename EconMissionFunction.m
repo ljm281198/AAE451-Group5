@@ -43,19 +43,19 @@ while diff > tolerance
 
   WarmupTakeoffOutput = WarmupTakeoffFunction(inputs);
   f_to                = WarmupTakeoffOutput.f_to;   % warm-up and takeoff fuel weight fraction
-    mbatt_to            = batP_to*2.20462*(0.1*inputs.Sizing.Power*t_taxi + inputs.Sizing.Power*t_to)/(eta_batt*batt_dens);  
+    mbatt_to            = batP_to*2.20462*(0.1*inputs.Sizing.Power*1000/1.342*t_taxi + inputs.Sizing.Power*1000/1.342*t_to)/(eta_batt*batt_dens);  
   mbatt_total         = mbatt_total + mbatt_to;
   mfuel_to            = (1-batP_to)*TOGW_temp*(1-f_to); % fuel weight takeoff [lbs]
   mfuel_total         = mfuel_total + mfuel_to;
-  W1                  = TOGW_temp - (mfuel_to + mbatt_to);     % aircraft weight after warm-up and takeoff [lbs]
+  W1                  = TOGW_temp - (mfuel_to);     % aircraft weight after warm-up and takeoff [lbs]
 % Climb segment fuel weight fraction
   ClimbOutput         = ClimbFunction(inputs);
   f_cl                = ClimbOutput.f_cl;           % climb fuel weight fraction
-    mbatt_cl            = batP_cl*2.20462*(inputs.Sizing.Power*t_cl)/(eta_batt*batt_dens);
+    mbatt_cl            = batP_cl*2.20462*(inputs.Sizing.Power*1000/1.342*t_cl)/(eta_batt*batt_dens);
   mbatt_total         = mbatt_total + mbatt_cl;
   mfuel_cl            = (1-batP_cl)*W1*(1-f_cl); % fuel weight climb [lbs]
   mfuel_total         = mfuel_total + mfuel_cl;
-  W2                  = W1 - (mfuel_cl + mbatt_cl);                    % aircraft weight after climb segment [lbs]
+  W2                  = W1 - (mfuel_cl);                    % aircraft weight after climb segment [lbs]
 % Cruise segment fuel weight fraction
   CruiseOutput        = CruiseFunction(inputs,W2);
   f_cr                = CruiseOutput.f_cr;          % cruise fuel weight fraction
@@ -71,7 +71,7 @@ while diff > tolerance
   mbatt_total         = mbatt_total + mbatt_dsc;
   mfuel_dsc            = W3*(1-f_dsc);     % fuel weight descend [lbs]
   mfuel_total         = mfuel_total + mfuel_dsc;
-  W4                  = W3*f_dsc;                   % aircraft weight after landing & taxi segment [lbs]
+  W4                  = W3 - mfuel_dsc;                   % aircraft weight after landing & taxi segment [lbs]
 % Loiter segment fuel weight fraction
   LoiterOutput        = LoiterFunction(inputs,W4);
   f_lt                = LoiterOutput.f_lt;          % loiter fuel weight segment
@@ -83,11 +83,11 @@ while diff > tolerance
 % Landing and taxi fuel weight fraction (including descend segment as well)
   LandingTaxiOutput   = LandingTaxiFunction(inputs);
   f_lnd               = LandingTaxiOutput.f_lnd;    % landing and taxi fuel weight segment
-  mbatt_lnd           = batP_lnd*2.20462*(0.1*inputs.Sizing.Power*t_lnd)/(eta_batt*batt_dens);
+  mbatt_lnd           = batP_lnd*2.20462*(0.1*inputs.Sizing.Power*1000/1.342*t_lnd)/(eta_batt*batt_dens);
   mbatt_total         = mbatt_total + mbatt_cl;
   mfuel_lnd           = (1-batP_lnd)*W5*(1-f_lnd); % fuel weight climb [lbs]
   mfuel_total         = mfuel_total + mfuel_lnd;
-  W6                  = W5 - (mfuel_lnd + mbatt_lnd);  % aircraft weight after landing & taxi segment [lbs] 
+  W6                  = W5 - (mfuel_lnd);  % aircraft weight after landing & taxi segment [lbs] 
 
 %% Compute new weights based on results of current iteration  
 % Total fuel weight fraction (including trapped fuel of 6%)  
@@ -116,5 +116,5 @@ output.EmptyWeight.We = inputs.EmptyWeight.We;
 output.TOGW        = TOGW;
 output.Wfuel       = Wfuel;
 output.W4          = W4;
-output.batt        = mbatt_final
+output.batt        = mbatt_final;
 

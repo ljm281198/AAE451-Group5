@@ -23,7 +23,10 @@ TOGW_temp = 41005;      % guess of takeoff gross weight [lbs]
 tolerance = 0.001;       % sizing tolerance
 diff      = tolerance+1; % initial tolerance gap
 mbatt_total = 0;
+<<<<<<< Updated upstream
 mfuel_total = 0; % initialize fuel [lbs]
+=======
+>>>>>>> Stashed changes
 while diff > tolerance
       inputs.Sizing.Power     = TOGW_temp*inputs.PerformanceInputs.PW; % compute total power (based on P/W)
    inputs.Sizing.TOGW_temp = TOGW_temp;             % store initial gross weight
@@ -61,40 +64,62 @@ while diff > tolerance
   f_cr                = CruiseOutput.f_cr;          % cruise fuel weight fraction
   mbatt_cruise        = CruiseOutput.batt;          % cruise battery weight [lbc]
   mbatt_total         = mbatt_total + mbatt_cruise; %total battery weight [lbs]
+<<<<<<< Updated upstream
     mfuel_cr            = W2*(1-f_cr); % fuel weight cruise [lbs]
   mfuel_total         = mfuel_total + mfuel_cr;
+=======
+>>>>>>> Stashed changes
   W3                  = W2*f_cr+mbatt_total;        % aircraft weight after cruise segment [lbs]
 % Descend fuel weight fraction (including descend segment as well)
   DescendOutput       = DescendFunction(inputs);
   f_dsc               = DescendOutput.f_dsc;    % landing and taxi fuel weight segment
+<<<<<<< Updated upstream
     mbatt_dsc           = 0;
   mbatt_total         = mbatt_total + mbatt_dsc;
   mfuel_dsc            = W3*(1-f_dsc);     % fuel weight descend [lbs]
   mfuel_total         = mfuel_total + mfuel_dsc;
+=======
+>>>>>>> Stashed changes
   W4                  = W3*f_dsc;                   % aircraft weight after landing & taxi segment [lbs]
 % Loiter segment fuel weight fraction
   LoiterOutput        = LoiterFunction(inputs,W4);
   f_lt                = LoiterOutput.f_lt;          % loiter fuel weight segment
+<<<<<<< Updated upstream
   mbatt_loiter        = LoiterOutput.batt;          % loiter battery weight [lbc]
   mbatt_total         = mbatt_total + mbatt_loiter; %total battery weight [lbs]
   mfuel_lt            = W4*(1-f_lt); % fuel weight loiter [lbs]
   mfuel_total         = mfuel_total + mfuel_lt;
+=======
+
+  mbatt_loiter        = LoiterOutput.batt;          % loiter battery weight [lbc]
+  mbatt_total         = mbatt_total + mbatt_loiter; %total battery weight [lbs]
+>>>>>>> Stashed changes
   W5                  = W4*f_lt+mbatt_total;        % aircraft weight after loiter segment [lbs]
 % Landing and taxi fuel weight fraction (including descend segment as well)
   LandingTaxiOutput   = LandingTaxiFunction(inputs);
   f_lnd               = LandingTaxiOutput.f_lnd;    % landing and taxi fuel weight segment
+<<<<<<< Updated upstream
   mbatt_lnd           = batP_lnd*2.20462*(0.1*inputs.Sizing.Power*t_lnd)/(eta_batt*batt_dens);
   mbatt_total         = mbatt_total + mbatt_cl;
   mfuel_lnd           = (1-batP_lnd)*W5*(1-f_lnd); % fuel weight climb [lbs]
   mfuel_total         = mfuel_total + mfuel_lnd;
   W6                  = W5 - (mfuel_lnd + mbatt_lnd);  % aircraft weight after landing & taxi segment [lbs] 
+=======
+  W6                  = W5*f_lnd;                   % aircraft weight after landing & taxi segment [lbs]
+>>>>>>> Stashed changes
 
 %% Compute new weights based on results of current iteration  
 % Total fuel weight fraction (including trapped fuel of 6%)  
 % Based on Raymer Ch.3 Eq. 3.11
+<<<<<<< Updated upstream
 %   FWF       = 1.06*(1- f_to*f_cl*f_cr*f_dsc*f_lt*f_lnd);  % Fuel weight fraction 
 %   Wfuel     = 0.8*FWF*TOGW_temp;                    % Total fuel weight [lbs] (Overestimates - used scaling factor)
     Wfuel = 0.65*1.06*mfuel_total;
+=======
+  FWF       = 1.06*(1- f_to*f_cl*f_cr*f_dsc*f_lt*f_lnd);  % Fuel weight fraction 
+  Wfuel     = 0.8*FWF*TOGW_temp;                    % Total fuel weight [lbs] (Overestimates - used scaling factor)
+  
+>>>>>>> Stashed changes
 % Aircraft Takeoff Gross Weight Weight (TOGW) [lbs]: Wempty+Wpayload+Wfuel  
   TOGW      = inputs.EmptyWeight.We + inputs.PayloadInputs.w_payload + Wfuel+mbatt_total;  
   
@@ -103,12 +128,19 @@ while diff > tolerance
   TOGW_temp = TOGW;                  
   mbatt_final = mbatt_total;
   mbatt_total = 0;
+<<<<<<< Updated upstream
   mfuel_total = 0;
+=======
+>>>>>>> Stashed changes
 end
 TOGW = TOGW_temp;     % Aircraft takeoff gross weight [lbs]
 
 %% OUTPUTS
+<<<<<<< Updated upstream
 inputs.EmptyWeight.We;
+=======
+inputs.EmptyWeight.We
+>>>>>>> Stashed changes
 output=inputs;
 output.Wfuel = Wfuel; % mission fuel weight [lbs]
 output.Wto   = TOGW;  % mission takeoff gross weight [lbs]

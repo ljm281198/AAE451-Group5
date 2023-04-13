@@ -31,7 +31,11 @@ while diff > tolerance
    eta_batt = inputs.BatteryInputs.eta_e;           %electric propuslion efficiency
    batt_dens = inputs.BatteryInputs.energydensity;      %battery energy density W*hr/kg
    batP_to = inputs.BatteryInputs.batP_to; % portion of battery used in taxi/takeoff
+<<<<<<< Updated upstream
    batP_cl = inputs.BatteryInputs.batP_cl; % portion of battery used in climb
+=======
+   batP_cl = inputs.BatteryInputs.batP_cl       = 0; % portion of battery used in climb
+>>>>>>> Stashed changes
    batP_dsc = inputs.BatteryInputs.batP_dsc; % portion of battery used in descend
    batP_lnd = inputs.BatteryInputs.batP_lnd; % portion of battery used in landing/taxi
    t_taxi = inputs.BatteryInputs.taxitime; % [hr]
@@ -83,6 +87,10 @@ while diff > tolerance
 % Loiter segment fuel weight fraction
   LoiterOutput        = LoiterFunction(inputs,W4);
   f_lt                = LoiterOutput.f_lt;          % loiter fuel weight segment
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   mbatt_lt            = LoiterOutput.batt;          % loiter battery weight [lbc]
   mbatt_total         = mbatt_total + mbatt_lt; %total battery weight [lbs]
   mfuel_lt            = W4*(1-f_lt); % fuel weight loiter [lbs]
@@ -102,7 +110,11 @@ while diff > tolerance
 
 %   FWF       = 1.06*(1- f_to*f_cl*f_cr*f_dsc*f_lt*f_lnd);  % Fuel weight fraction 
 %   Wfuel     = FWF*TOGW_temp;                        % Total fuel weight [lbs] (Overestimates - used scaling factor)
+<<<<<<< Updated upstream
   Wfuel = 0.85*1.06*mfuel_total;
+=======
+  Wfuel = 1.06*mfuel_total;
+>>>>>>> Stashed changes
 % Aircraft Takeoff Gross Weight Weight (TOGW) [lbs]: Wempty+Wpayload+Wfuel  
   TOGW      = EmptyWeightOutput.We + inputs.PayloadInputs.w_payload + Wfuel+mbatt_total;  
   
@@ -112,7 +124,10 @@ while diff > tolerance
   TOGW      = 0; 
   mbatt_final = mbatt_total;
   mbatt_total = 0;
+<<<<<<< Updated upstream
   mfuel_total = 0;
+=======
+>>>>>>> Stashed changes
 end
 
 % EmptyWeightOutput
@@ -128,6 +143,7 @@ FinalOutput.Power       = inputs.Sizing.Power;
 FinalOutput.W4          = W4;
 FinalOutput.batt        = mbatt_final;
 
+<<<<<<< Updated upstream
 inputs.Aero.Cdo.cruise = ParasiteDragFunction(inputs,"cruise");
 inputs.Aero.Cdo.loiter = ParasiteDragFunction(inputs,"loiter");
 FinalOutput.Cdocruise = inputs.Aero.Cdo.cruise;
@@ -135,4 +151,8 @@ FinalOutput.Cdoloiter = inputs.Aero.Cdo.loiter;
 FinalOutput.Vloiter = LoiterOutput.Vloiter;
 FinalOutput.Wfcruise = W3/TOGW;
 FinalOutput.Wfclimb = W2/TOGW;
+=======
+inputs.Aero.Cdo = ParasiteDragFunction(inputs);
+FinalOutput.Cdo = inputs.Aero.Cdo;
+>>>>>>> Stashed changes
 end

@@ -4,6 +4,7 @@
 % Other methods that do a more accurate drag-build-up should replace the
 % approach used here.
 
+<<<<<<< Updated upstream
 function Cdo = ParasiteDragFunction(inputs,cruiseLoiter)
 %% Inputs
   Sw = inputs.GeometryOutput.Sw; % Planform wing area [ft^2]
@@ -160,4 +161,13 @@ CD0_bogey = 1.40;   %bogey, Only when gear is deployed!!!
 Cdo = CD0_fuse + CD0_nace + CD0_wing + CD0_strut + CD0_tailH + CD0_tailV; %total parasite drag of whole aircraft
 Cdo=1.1*Cdo;
 % Cdo=0.022;
+=======
+function Cdo = ParasiteDragFunction(inputs)
+% Equivalent skin friction coefficient (based on Raymer Ch.12 Table 12.3)
+Cfe = 0.0026;    % Light aircraft - SINGLE engine
+
+% Parasite Drag coefficient
+Cdo = Cfe*inputs.GeometryOutput.Swet/inputs.GeometryOutput.Sw; 
+Cdo=0.022;
+>>>>>>> Stashed changes
 end

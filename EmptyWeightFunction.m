@@ -18,8 +18,9 @@ function output = EmptyWeightFunction(inputs)
 % Empty weight [lbs]
 %Raymer "GA - SINGLE ENGINE", Table 6.2
 %   output.We = (-0.25+1.18*W_dg^(-0.20)*AR^(0.08)*PW^(0.05)*WS^(-0.05)*Vmax^(0.27))*W_dg;  
-  % Raymer twin turboprop Table 6.2
-  output.We = 0.85*((0.37+0.09*W_dg^(-0.06)*AR^(0.08)*PW^(0.08)*WS^(-0.05)*Vmax^(0.3)))*W_dg;  %10% reduction for composites
+  % Raymer twin turboprop Table 6.2 (1.075 is factor added when adjusting
+  % code for ATR42)
+  output.We = 0.8*1.075*((0.37+0.09*W_dg^(-0.06)*AR^(0.08)*PW^(0.08)*WS^(-0.05)*Vmax^(0.3)))*W_dg;  %20% reduction for composites
 % Empty weight fraction
   output.fe = output.We/inputs.Sizing.TOGW_temp; 
 

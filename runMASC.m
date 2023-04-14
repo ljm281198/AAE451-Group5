@@ -37,16 +37,16 @@ PerformanceInputs.hc   = 30000;      % cruise altitude [ft]
 PerformanceInputs.hlt  = 25000;      % loiter altitude [ft]
 
 %% GEOMETRY PARAMETERS
-GeometryInputs.AR          = 20;         % wing aspect ratio
+GeometryInputs.AR          = 18;         % wing aspect ratio
 GeometryInputs.WingSweep   = 0;          % wing sweep (LE) [deg]
 GeometryInputs.thick2chord = 0.12;       % wing thickness-to-chord ratio
-GeometryInputs.TR          = 0.667;        % wing taper ratio
+GeometryInputs.TR          = 0.82;        % wing taper ratio
         
 %% CONFIGURATION PARAMETERS
 % These parameters and their default values are listed in the LayoutFunction.m file
 
 %% AERODYNAMIC PARAMETERS
-AeroInputs.Clmax   = 1.91529;                  % maximum lift coefficient
+AeroInputs.Clmax   = 1.80653;                  % maximum lift coefficient
 
 %% PROPULSION PARAMETERS
 PropulsionInputs.num_eng    = 8;           % number of engines

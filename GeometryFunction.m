@@ -44,8 +44,8 @@ fr          = lf/df;                                   % fuselage finess ratio
 Swetfus     = pi*df*lf*(1-2/fr)^(2/3)*(1+1/fr^2);      % wetted area of fuselage [ft^2]
 
 %% Tails geometry computations (Based on Raymer Ch.6 Eq. 6.28-6.29)
-H_loc       = 0.586;                                    % Location of H-tail as a fraction of fuselage length
-V_loc       = 0.495;                                    % Location of V-tail as a fraction of fuselage length
+H_loc       = 0.582;                                    % Location of H-tail as a fraction of fuselage length
+V_loc       = 0.489;                                    % Location of V-tail as a fraction of fuselage length
 Lht         = H_loc*lf;                                % H-tail moment arm [ft]
 Lvt         = V_loc*lf;                                % V-tail moment arm (for engines on wing) [ft]
 Sv          = Cvt*b*Sw/Lvt;                            % V-tail surface area [ft^2]

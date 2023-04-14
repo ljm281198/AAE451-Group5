@@ -40,7 +40,7 @@ PerformanceInputs.hlt  = 25000;      % loiter altitude [ft]
 GeometryInputs.AR          = 20;         % wing aspect ratio
 GeometryInputs.WingSweep   = 0;          % wing sweep (LE) [deg]
 GeometryInputs.thick2chord = 0.12;       % wing thickness-to-chord ratio
-GeometryInputs.TR          = 0.667;        % wing taper ratio
+GeometryInputs.TR          = 0.8;        % wing taper ratio
         
 %% CONFIGURATION PARAMETERS
 % These parameters and their default values are listed in the LayoutFunction.m file

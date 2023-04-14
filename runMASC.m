@@ -27,17 +27,17 @@ MissionInputs.pax         = 48;      % number of passengers
 EconMission.range         = 500;    % economic mission length [nmi]
 
 %% PERFORMANCE PARAMETERS
-PerformanceInputs.PW   = 0.041;      % power-to-weight ratio [lb/hp]
-PerformanceInputs.WS   = 35;        % wing loading [lbs/ft^2]
+PerformanceInputs.PW   = 0.030;      % power-to-weight ratio [lb/hp]
+PerformanceInputs.WS   = 29;        % wing loading [lbs/ft^2]
 PerformanceInputs.V    = 275;       % cruise velocity [knots]
 PerformanceInputs.M    = PerformanceInputs.V/994.7485;     % cruise velocity [Mach]. This needs to be changed to match V at desired altitude.  Can automate this calculation with the AtmosphereFunction
-PerformanceInputs.Vlt  = 100;       % loiter velocity [knots] [[change]]
+PerformanceInputs.Vlt  = 98;       % loiter velocity [knots] [[change]]
 PerformanceInputs.nmax = 3.75;      % maximum load factor
 PerformanceInputs.hc   = 30000;      % cruise altitude [ft]
 PerformanceInputs.hlt  = 25000;      % loiter altitude [ft]
 
 %% GEOMETRY PARAMETERS
-GeometryInputs.AR          = 16;         % wing aspect ratio
+GeometryInputs.AR          = 20;         % wing aspect ratio
 GeometryInputs.WingSweep   = 0;          % wing sweep (LE) [deg]
 GeometryInputs.thick2chord = 0.12;       % wing thickness-to-chord ratio
 GeometryInputs.TR          = 0.667;        % wing taper ratio
@@ -46,7 +46,7 @@ GeometryInputs.TR          = 0.667;        % wing taper ratio
 % These parameters and their default values are listed in the LayoutFunction.m file
 
 %% AERODYNAMIC PARAMETERS
-AeroInputs.Clmax   = 1.92;                  % maximum lift coefficient
+AeroInputs.Clmax   = 1.91529;                  % maximum lift coefficient
 
 %% PROPULSION PARAMETERS
 PropulsionInputs.num_eng    = 8;           % number of engines
@@ -66,8 +66,8 @@ PayloadInputs.w_payload  = crewweight + paxweight;            % total payload we
 %% BATTERY PARAMETERS
 BatteryInputs.energydensity = 450; % battery energy density [Wh/kg]
 BatteryInputs.eta_e         = 0.931; % battery electric efficiency
-BatteryInputs.batP_to       = 0.6; % portion of battery used in taxi/takeoff
-BatteryInputs.batP_cl       = 0.6; % portion of battery used in climb
+BatteryInputs.batP_to       = 0.3; % portion of battery used in taxi/takeoff
+BatteryInputs.batP_cl       = 0.3; % portion of battery used in climb
 BatteryInputs.batP_cr       = 0; % portion of battery used in cruise
 BatteryInputs.batP_dsc      = 0; % portion of battery used in descend
 BatteryInputs.batP_lt       = 0; % portion of battery used in loiter

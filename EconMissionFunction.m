@@ -25,7 +25,7 @@ diff      = tolerance+1; % initial tolerance gap
 mbatt_total = 0;
 mfuel_total = 0; % initialize fuel [lbs]
 while diff > tolerance
-      inputs.Sizing.Power     = TOGW_temp*inputs.PerformanceInputs.PW % compute total power (based on P/W)
+      inputs.Sizing.Power     = TOGW_temp*inputs.PerformanceInputs.PW; % compute total power (based on P/W)
    inputs.Sizing.TOGW_temp = TOGW_temp;             % store initial gross weight
    W0                      = TOGW_temp;             % initial gross weight for current iteration [lbs]
     inputs.Sizing.W0        = W0;

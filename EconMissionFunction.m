@@ -96,7 +96,7 @@ while diff > tolerance
 %   Wfuel     = 0.8*FWF*TOGW_temp;                    % Total fuel weight [lbs] (Overestimates - used scaling factor)
     Wfuel = 0.65*1.06*mfuel_total;
 % Aircraft Takeoff Gross Weight Weight (TOGW) [lbs]: Wempty+Wpayload+Wfuel  
-  TOGW      = inputs.EmptyWeight.We + inputs.PayloadInputs.w_payload + Wfuel+mbatt_total;  
+  TOGW      = inputs.EmptyWeight.We + inputs.PayloadInputs.w_payload + Wfuel+1.782*mbatt_total;  
   
 % Compute convergence criteria & set-up for next iteration   
   diff      = abs(TOGW_temp - TOGW);

@@ -5,9 +5,9 @@ Sw = FinalOutput.Sw; % Planform wing area [ft^2]
 
 
 %n_plus for Part 25 regulations
-n_plus = 2.1 + 24000/(W_0 + 10000)
+n_plus = 2.1 + 24000/(W_0 + 10000);
 if n_plus < 2.5
-    n_plus = 2.5
+    n_plus = 2.5;
 end
 
 Ve = linspace(0,320,320);
@@ -41,10 +41,19 @@ plot(V_cruise*ones(1,length(n_axis)),n_axis,"--")
 %plot V_dive
 plot(V_dive*ones(1,length(n_axis)),n_axis,"--")
 
+%% V_A_plus and V_A_minus
+syms V_A_plus V_A_minus
+
+eqn = (0.00237691267925741/2) * (1.688)^2 * (V_A_plus.^2 * AeroInputs.Clmax)/(FinalOutput.TOGW/Sw) == n_plus;   %n_plus == n_plus_stall
+V_A_plus = solve(eqn,V_A_plus>0,V_A_plus)
+
+% eqn = (0.00237691267925741/2) * (1.688)^2 * (V_A_minus.^2 * AeroInputs.Clmax_minus)/(FinalOutput.TOGW/Sw) == n_minus;   %n_minus == n_minus_stall
+% V_A_minus = solve(eqn,V_A_minus>0,V_A_minus)
+
 end
 
 function EAS = TAS_to_EAS(TAS,h) %converts True Air Speed to Equivalent Air speed (units does not matter, output same units as input)
-    [a,mu,rho] = AtmosphereFunction(h)    
+    [a,mu,rho] = AtmosphereFunction(h);  
     EAS = TAS*sqrt(rho/0.00237691267925741); % 0.00237691267925741 = sea-level air density [slug/ft^3]
 end
 

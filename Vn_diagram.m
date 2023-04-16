@@ -55,18 +55,32 @@ eqn = (0.00237691267925741/2) * (1.688)^2 * (V_A_plus.^2 * AeroInputs.Clmax)/(Fi
 V_A_plus = solve(eqn,V_A_plus>0,V_A_plus)
 
 n_axis_positive = linspace(0,1,100);  
-plot(V_A_plus*ones(1,length(n_axis_positive)),n_axis_positive.*n_plus,"-")
+plot(V_A_plus*ones(1,length(n_axis_positive)),n_axis_positive.*n_plus,"--")
 
 % V_A_minus
 eqn = (0.00237691267925741/2) * (1.688)^2 * (V_A_minus.^2 * AeroInputs.Clmax_minus)/(FinalOutput.TOGW/Sw) == n_minus;   %n_minus == n_minus_stall
 V_A_minus = solve(eqn,V_A_minus>0,V_A_minus)
 
 n_axis_negative = linspace(0,-1,100);  
-plot(V_A_minus*ones(1,length(n_axis_positive)),n_axis_positive.*n_minus,"-")
+plot(V_A_minus*ones(1,length(n_axis_positive)),n_axis_positive.*n_minus,"--")
+%% plot V_s_plus and V_s_minus
+syms V_s_plus V_s_minus
+% V_s_plus
+eqn = (0.00237691267925741/2) * (1.688)^2 * (V_s_plus.^2 * AeroInputs.Clmax)/(FinalOutput.TOGW/Sw) == 1;   %1 == n_plus_stall
+V_s_plus = solve(eqn,V_s_plus>0,V_s_plus)
+
+n_axis_positive = linspace(0,1,100);  
+plot(V_s_plus.*ones(1,length(n_axis_positive)),n_axis_positive.*1,"-")
+
+% V_s_minus
+eqn = (0.00237691267925741/2) * (1.688)^2 * (V_s_minus.^2 * AeroInputs.Clmax_minus)/(FinalOutput.TOGW/Sw) == -1;   %-1 == n_minus_stall
+V_s_minus = solve(eqn,V_s_minus>0 ,V_s_minus)
+
+plot(V_s_minus.*ones(1,length(n_axis_positive)),n_axis_positive.*-1,"-")
 
 % plot line from V_A_plus to V_A_minus
-V_A_plus_to_minus = linspace(V_A_plus,V_A_minus,100)
-plot(V_A_plus_to_minus,0*ones(1,length(V_A_plus_to_minus)))
+V_s_plus_to_minus = linspace(V_s_plus,V_s_minus,100)
+plot(V_s_plus_to_minus,0*ones(1,length(V_s_plus_to_minus)))
 
 
 end

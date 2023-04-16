@@ -13,6 +13,7 @@ end
 Ve = linspace(0,320,320);
 plot(Ve, n_plus*ones(1,length(Ve)),"--")
 hold on
+grid on
 
 %n_minus
 h_cruise = PerformanceInputs.hc;
@@ -20,9 +21,14 @@ V_cruise = PerformanceInputs.V;
 V_cruise = TAS_to_EAS(V_cruise,h_cruise);
 
 V_dive = V_cruise/0.8;    
-% n_minus =                         %wait for email
-% if n_minus > -1.0
-%     n_minus = -1.0
+n_minus = -1.5                       %From thin air!!!!!!!!!!!!!!!!
+if n_minus > -1.0
+    n_minus = -1.0
+end
+
+Ve = linspace(0,320,320);
+plot(Ve, n_minus*ones(1,length(Ve)),"--")
+hold on
 
 %% n_plus_stall, n_minus_stall
 % n_plus_stall
@@ -35,20 +41,33 @@ plot(Ve, n_minus_stall,"--")
 
 %% plot V_cruise and V_dive
 %plot V_cruise
-n_axis = linspace(-10,10,100);                      %indexes for plotting vertical lines
-plot(V_cruise*ones(1,length(n_axis)),n_axis,"--")
+n_axis = linspace(-1,1,100);                      %indexes for plotting vertical lines
+plot(V_cruise*ones(1,length(n_axis)),n_axis.*10,"--")
 
 %plot V_dive
-plot(V_dive*ones(1,length(n_axis)),n_axis,"--")
+plot(V_dive*ones(1,length(n_axis)),n_axis.*10,"--")
 
 %% V_A_plus and V_A_minus
 syms V_A_plus V_A_minus
 
+% V_A_plus
 eqn = (0.00237691267925741/2) * (1.688)^2 * (V_A_plus.^2 * AeroInputs.Clmax)/(FinalOutput.TOGW/Sw) == n_plus;   %n_plus == n_plus_stall
 V_A_plus = solve(eqn,V_A_plus>0,V_A_plus)
 
-% eqn = (0.00237691267925741/2) * (1.688)^2 * (V_A_minus.^2 * AeroInputs.Clmax_minus)/(FinalOutput.TOGW/Sw) == n_minus;   %n_minus == n_minus_stall
-% V_A_minus = solve(eqn,V_A_minus>0,V_A_minus)
+n_axis_positive = linspace(0,1,100);  
+plot(V_A_plus*ones(1,length(n_axis_positive)),n_axis_positive.*n_plus,"-")
+
+% V_A_minus
+eqn = (0.00237691267925741/2) * (1.688)^2 * (V_A_minus.^2 * AeroInputs.Clmax_minus)/(FinalOutput.TOGW/Sw) == n_minus;   %n_minus == n_minus_stall
+V_A_minus = solve(eqn,V_A_minus>0,V_A_minus)
+
+n_axis_negative = linspace(0,-1,100);  
+plot(V_A_minus*ones(1,length(n_axis_positive)),n_axis_positive.*n_minus,"-")
+
+% plot line from V_A_plus to V_A_minus
+V_A_plus_to_minus = linspace(V_A_plus,V_A_minus,100)
+plot(V_A_plus_to_minus,0*ones(1,length(V_A_plus_to_minus)))
+
 
 end
 

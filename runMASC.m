@@ -27,7 +27,7 @@ MissionInputs.pax         = 48;      % number of passengers
 EconMission.range         = 500;    % economic mission length [nmi]
 
 %% PERFORMANCE PARAMETERS
-PerformanceInputs.PW   = 0.033;      % power-to-weight ratio [lb/hp]
+PerformanceInputs.PW   = 0.03;      % power-to-weight ratio [lb/hp]
 PerformanceInputs.WS   = 48;        % wing loading [lbs/ft^2]
 PerformanceInputs.V    = 275;       % cruise velocity [knots]
 PerformanceInputs.M    = PerformanceInputs.V/994.7485;     % cruise velocity [Mach]. This needs to be changed to match V at desired altitude.  Can automate this calculation with the AtmosphereFunction

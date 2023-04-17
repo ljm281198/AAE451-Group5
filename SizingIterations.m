@@ -119,7 +119,7 @@ end
 % EmptyWeightOutput
 TOGW = TOGW_temp;                  % Aircraft takeoff gross weight [lbs]
 EWF  = (EmptyWeightOutput.We+mbatt_final)/TOGW;  % Empty weight fraction
-EmptyWeightOutput.We = EmptyWeightOutput.We+mbatt_final;
+EmptyWeightOutput.We = EmptyWeightOutput.We+1.782*mbatt_final;
 %% Aggregate results
 FinalOutput             = inputs;
 FinalOutput.EmptyWeight = EmptyWeightOutput;

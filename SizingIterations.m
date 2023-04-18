@@ -136,4 +136,5 @@ FinalOutput.Cdoloiter = inputs.Aero.Cdo.loiter;
 FinalOutput.Vloiter = LoiterOutput.Vloiter;
 FinalOutput.Wfcruise = W3/TOGW;
 FinalOutput.Wfclimb = W2/TOGW;
+FinalOutput.Wfto = W1/TOGW;
 end

@@ -73,6 +73,7 @@ while diff > tolerance
   mfuel_total         = mfuel_total + mfuel_dsc;
   W4                  = W3 - mfuel_dsc;                   % aircraft weight after landing & taxi segment [lbs]
 % Loiter segment fuel weight fraction
+  inputs.MissionInputs.loiter_time = 0;  
   LoiterOutput        = LoiterFunction(inputs,W4);
   f_lt                = LoiterOutput.f_lt;          % loiter fuel weight segment
   mbatt_loiter        = LoiterOutput.batt;          % loiter battery weight [lbc]
@@ -80,6 +81,7 @@ while diff > tolerance
   mfuel_lt            = W4*(1-f_lt); % fuel weight loiter [lbs]
   mfuel_total         = mfuel_total + mfuel_lt;
   W5                  = W4 - mfuel_lt;        % aircraft weight after loiter segment [lbs]
+  inputs.MissionInputs.loiter_time = 0.75;  
 % Landing and taxi fuel weight fraction (including descend segment as well)
   LandingTaxiOutput   = LandingTaxiFunction(inputs);
   f_lnd               = LandingTaxiOutput.f_lnd;    % landing and taxi fuel weight segment

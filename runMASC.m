@@ -29,9 +29,11 @@ EconMission.range         = 500;    % economic mission length [nmi]
 %% PERFORMANCE PARAMETERS
 PerformanceInputs.PW   = 0.036;      % power-to-weight ratio [lb/hp]
 PerformanceInputs.WS   = 40;        % wing loading [lbs/ft^2]
+PerformanceInputs.PW   = 0.037;      % power-to-weight ratio [lb/hp]
+PerformanceInputs.WS   = 35;        % wing loading [lbs/ft^2]
 PerformanceInputs.V    = 275;       % cruise velocity [knots]
 PerformanceInputs.M    = PerformanceInputs.V/994.7485;     % cruise velocity [Mach]. This needs to be changed to match V at desired altitude.  Can automate this calculation with the AtmosphereFunction
-PerformanceInputs.Vlt  = 98;       % loiter velocity [knots] [[change]]
+PerformanceInputs.Vlt  = 108;       % loiter velocity [knots] [[change]]
 PerformanceInputs.nmax = 3.75;      % maximum load factor
 PerformanceInputs.hc   = 30000;      % cruise altitude [ft]
 PerformanceInputs.hlt  = 25000;      % loiter altitude [ft]
@@ -94,6 +96,7 @@ cd0cruise = SizingOutput.Cdocruise
 Vloiter = SizingOutput.Vloiter %ktas
 Wfrac_cruise = SizingOutput.Wfcruise
 Wfrac_climb = SizingOutput.Wfclimb
+Wfrac_takeoff = SizingOutput.Wfto
 %% ECONOMIC MISSION ANALYSIS
    EconMissionOutput = EconMissionFunction(SizingOutput);
    
